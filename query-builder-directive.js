@@ -260,7 +260,7 @@ queryBuilder.factory('queryService', [function() {
 				}
 			});
 
-			fields.forEach(function(field) {
+			fields && fields.forEach(function(field) {
 				var fieldIdAsString = String(field.id);
 				if (spec.indexOf(fieldIdAsString) === 0 && fieldIdAsString.length === indexOfComparator) {
 					rule.field = field;
@@ -328,7 +328,7 @@ queryBuilder.factory('queryService', [function() {
 
 	function isValid(group) {
 		var groupIsValid = true;
-		group.rules.forEach(function(rule) {
+		group && group.rules.forEach(function(rule) {
 			if (!!rule.group) {
 				groupIsValid = groupIsValid && isValid(rule.group);
 			} else {
