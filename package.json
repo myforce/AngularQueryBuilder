@@ -1,13 +1,19 @@
 {
-	"version": "1.0.1",
-	"name": "angular-query-builder",
-	"main": "./query-builder-directive.js",
-  "private": true,
-	"dependencies": {
-		"angular": "~1"
-	},
-	"description": "A angular directive to visually create queries",
-	"authors": [
-		"Pieter Kempenaers <pkempenaers@myforce.be>"
-	],
+    "version": "1.0.1",
+    "name": "angular-query-builder",
+    "main": "./dist/query-builder.js",
+    "dependencies": {
+        "angular": "~1",
+        "angularjs-dropdown-multiselect": "2.0.0-beta.10"
+    },
+    "devDependencies": {
+        "concat": "^1.0.3"
+    },
+    "description": "A angular directive to visually create queries",
+    "authors": [
+        "Pieter Kempenaers <pkempenaers@myforce.be>"
+    ],
+    "scripts": {
+        "build": "mkdir -p dist && concat -o dist/query-builder.js query-builder-directive.js query-builder-controller.js"
+    }
 }
