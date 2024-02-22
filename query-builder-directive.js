@@ -20,7 +20,7 @@ queryBuilder.run(['$templateCache', function($templateCache) {
                     '</div>' +
                     '<div ng-switch-default="ng-switch-default">' +
 											'<div class="form-inline">' +
-											'<input type="text" ng-model="rule.fieldId" uib-typeahead="field as field.displayName for field in queryBuilder.fields | filter: { displayName: $viewValue }" typeahead-min-length="0" typeahead-select-on-exact="true" class="form-control field" ng-change="queryBuilder.changeField($index, rule.fieldId, oldValue); oldValue=rule.fieldId;">' +
+											'<input type="text" ng-model="rule.fieldId" uib-typeahead="field as field.displayName for field in queryBuilder.fields | filter: { displayName: $viewValue }" typeahead-min-length="-1" typeahead-select-on-exact="true" class="form-control field" ng-change="queryBuilder.changeField($index, rule.fieldId, oldValue); oldValue=rule.fieldId;">' +
 											'<select ng-change="queryBuilder.changeComparator($index)" ng-options="c.name disable when !!rule.field.disabledComparators && rule.field.disabledComparators.indexOf(c.id) !== -1 for c in queryBuilder.comparators" ng-model="rule.comparator" class="form-control comparator"></select>' +
 											'<input ng-if="(!rule.field.options || rule.field.options.length === 0) && !rule.comparator.dataTemplate" type="text" ng-model="rule.data" class="form-control data" ng-change="queryBuilder.changeData()"/>' +
 											'<div ng-if="!!rule.comparator.dataTemplate" static-include="{{rule.comparator.dataTemplate}}" change="queryBuilder.change()" data="rule.data" class="data"></div>' +
