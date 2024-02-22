@@ -27,7 +27,7 @@ queryBuilder.run(['$templateCache', function($templateCache) {
 											'<select ng-if="!rule.comparator.dataTemplate && rule.field.options.length > 0 && rule.comparator.value !== \'->\'" ng-model="rule.data" ng-options="o.name for o in rule.field.options track by o.id" class="form-control data" ng-change="queryBuilder.changeData()" ng-class="{\'dropdown-menu\': rule.field.options.length > 5}"></select>' +
 											'<select ng-if="!rule.comparator.dataTemplate && rule.field.options.length > 0 && rule.comparator.value === \'->\'" multiple="true" ng-model="rule.data" ng-options="o.name for o in rule.field.options  track by o.id" class="form-control data" ng-change="queryBuilder.changeData()" ng-class="{\'dropdown-menu\': rule.field.options.length > 5}"></select>' +
 											'<button ng-click="queryBuilder.removeCondition($index)" ng-class="queryBuilder.classes.removeButton"><span ng-class="queryBuilder.classes.removeIcon"></span></button>' +
-											'</div>' +
+										'</div>' +
 									 '</div>' +
 								'</div>' +
 								'<div ng-if="queryBuilder.separateLinesWithOperator && !$last">' +
