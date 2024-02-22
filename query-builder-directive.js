@@ -20,15 +20,13 @@ queryBuilder.run(['$templateCache', function($templateCache) {
                     '</div>' +
                     '<div ng-switch-default="ng-switch-default">' +
 											'<div class="form-inline">' +
-													'<select ng-change="queryBuilder.changeField($index, rule.fieldId, oldValue); oldValue=rule.fieldId;"  ng-init="oldValue=rule.field.id;" ng-model="rule.fieldId" class="form-control field">' +
-													'<option ng-repeat="field in queryBuilder.fields" ng-disabled="field.used" value="{{field.id}}">{{field.name}}</option>'+
-													'</select>' +
-													'<select ng-change="queryBuilder.changeComparator($index)" ng-options="c.name disable when !!rule.field.disabledComparators && rule.field.disabledComparators.indexOf(c.id) !== -1 for c in queryBuilder.comparators" ng-model="rule.comparator" class="form-control comparator"></select>' +
-													'<input ng-if="(!rule.field.options || rule.field.options.length === 0) && !rule.comparator.dataTemplate"type="text" ng-model="rule.data" class="form-control data" ng-change="queryBuilder.changeData()"/>' +
-													'<div ng-if="!!rule.comparator.dataTemplate" static-include="{{rule.comparator.dataTemplate}}" change="queryBuilder.change()" data="rule.data" class="data"></div>' +
-													'<select ng-if="!rule.comparator.dataTemplate && rule.field.options.length > 0 && rule.comparator.value !== \'->\'" ng-model="rule.data" ng-options="o.name for o in rule.field.options track by o.id" class="form-control data" ng-change="queryBuilder.changeData()"></select>' +
-													'<select ng-if="!rule.comparator.dataTemplate && rule.field.options.length > 0 && rule.comparator.value === \'->\'" multiple="true" ng-model="rule.data" ng-options="o.name for o in rule.field.options  track by o.id" class="form-control data" ng-change="queryBuilder.changeData()"></select>' +
-													'<button ng-click="queryBuilder.removeCondition($index)" ng-class="queryBuilder.classes.removeButton"><span ng-class="queryBuilder.classes.removeIcon"></span></button>' +
+											'<input type="text" ng-model="rule.fieldId" uib-typeahead="field as field.displayName for field in queryBuilder.fields | filter: { displayName: $viewValue }" typeahead-min-length="0" typeahead-select-on-exact="true" class="form-control field" ng-change="queryBuilder.changeField($index, rule.fieldId, oldValue); oldValue=rule.fieldId;">' +
+											'<select ng-change="queryBuilder.changeComparator($index)" ng-options="c.name disable when !!rule.field.disabledComparators && rule.field.disabledComparators.indexOf(c.id) !== -1 for c in queryBuilder.comparators" ng-model="rule.comparator" class="form-control comparator"></select>' +
+											'<input ng-if="(!rule.field.options || rule.field.options.length === 0) && !rule.comparator.dataTemplate" type="text" ng-model="rule.data" class="form-control data" ng-change="queryBuilder.changeData()"/>' +
+											'<div ng-if="!!rule.comparator.dataTemplate" static-include="{{rule.comparator.dataTemplate}}" change="queryBuilder.change()" data="rule.data" class="data"></div>' +
+											'<select ng-if="!rule.comparator.dataTemplate && rule.field.options.length > 0 && rule.comparator.value !== \'->\'" ng-model="rule.data" ng-options="o.name for o in rule.field.options track by o.id" class="form-control data" ng-change="queryBuilder.changeData()" ng-class="{\'dropdown-menu\': rule.field.options.length > 5}"></select>' +
+											'<select ng-if="!rule.comparator.dataTemplate && rule.field.options.length > 0 && rule.comparator.value === \'->\'" multiple="true" ng-model="rule.data" ng-options="o.name for o in rule.field.options  track by o.id" class="form-control data" ng-change="queryBuilder.changeData()" ng-class="{\'dropdown-menu\': rule.field.options.length > 5}"></select>' +
+											'<button ng-click="queryBuilder.removeCondition($index)" ng-class="queryBuilder.classes.removeButton"><span ng-class="queryBuilder.classes.removeIcon"></span></button>' +
 											'</div>' +
 									 '</div>' +
 								'</div>' +
